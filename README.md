@@ -4,7 +4,7 @@
 
 # 🌾 Zenith Agri — Agriculture Management System
 
-**An AI-powered, full-stack agriculture intelligence platform for smart farming, land analysis, crop health diagnostics, and agronomy knowledge — built for Tamil Nadu's diverse agro-climatic zones.**
+**An AI-powered, full-stack agriculture intelligence platform for smart farming, land analysis, crop health diagnostics, and agronomy knowledge — built for India's diverse agro-climatic zones.**
 
 <br/>
 
