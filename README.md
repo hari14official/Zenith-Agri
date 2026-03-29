@@ -252,54 +252,6 @@ Platform overview · Feature grid with images · Crops gallery · Sustainable br
 
 ---
 
-## 🗄️ Database Schema
-
-```sql
--- Users
-CREATE TABLE users (
-    id         INTEGER PRIMARY KEY AUTOINCREMENT,
-    name       TEXT NOT NULL,
-    email      TEXT UNIQUE NOT NULL,
-    password   TEXT NOT NULL,
-    role       TEXT CHECK(role IN ('Admin','Farmer')) NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-
--- Research Articles (Admin-authored)
-CREATE TABLE research_articles (
-    id                      INTEGER PRIMARY KEY AUTOINCREMENT,
-    admin_id                INTEGER REFERENCES users(id),
-    crop_name               TEXT NOT NULL,
-    ideal_soil_type         TEXT,
-    required_moisture_level TEXT,
-    ideal_climate           TEXT,
-    season                  TEXT,
-    cultivation_process     TEXT,
-    created_at              DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-
--- Fertilizers (linked to articles)
-CREATE TABLE fertilizers (
-    id                 INTEGER PRIMARY KEY AUTOINCREMENT,
-    article_id         INTEGER REFERENCES research_articles(id),
-    name               TEXT NOT NULL,
-    usage_instructions TEXT
-);
-
--- AI Analysis History
-CREATE TABLE analysis_history (
-    id                INTEGER PRIMARY KEY AUTOINCREMENT,
-    farmer_id         INTEGER REFERENCES users(id),
-    latitude          REAL,
-    longitude         REAL,
-    detected_soil     TEXT,
-    detected_moisture TEXT,
-    weather_json      TEXT,
-    created_at        DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-```
-
----
 
 ## 🤝 Contributing
 
