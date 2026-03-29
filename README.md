@@ -42,40 +42,6 @@
 
 ---
 
-## 🏗️ Project Architecture
-
-```
-AMS/
-├── 📁 frontend/                     # React + Vite + TailwindCSS
-│   ├── src/
-│   │   ├── pages/
-│   │   │   ├── Home.jsx             # Landing: hero, stats, modules
-│   │   │   ├── Login.jsx            # Split-screen auth
-│   │   │   ├── Signup.jsx           # Registration + role selection
-│   │   │   ├── FarmerDashboard.jsx  # Analytics, stats, research cards
-│   │   │   ├── AdminDashboard.jsx   # Admin control panel
-│   │   │   ├── LandAnalysis.jsx     # AI soil + crop (Leaflet map)
-│   │   │   ├── KnowledgeHub.jsx     # Research library + search
-│   │   │   └── ExploreMore.jsx      # Platform showcase
-│   │   └── components/
-│   │       ├── Navbar.jsx           # Sticky 3-column responsive navbar
-│   │       ├── Footer.jsx           # Site footer
-│   │       └── AgribusinessInfo.jsx # ERP delivery model section
-│   ├── Dockerfile                   # Multi-stage Node → Nginx
-│   └── nginx.conf                   # SPA routing + API proxy
-│
-├── 📁 backend/                      # FastAPI + Python 3.11
-│   ├── main.py                      # API routes, CORS, SPA host
-│   ├── requirements.txt             # Python dependencies
-│   ├── schema.sql                   # Database schema
-│   └── Dockerfile                   # Python 3.11-slim container
-│
-├── docker-compose.yml               # Frontend + Backend orchestration
-├── .dockerignore                    # Excludes venv, node_modules
-└── README.md                        # This file
-```
-
----
 
 ## 🛠️ Tech Stack
 
