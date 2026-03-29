@@ -290,7 +290,7 @@ git push origin feat/my-feature
 - [ ] 📤 Export analysis reports as PDF
 - [ ] 🔔 Push notifications for disease alerts
 - [ ] 🗃️ PostgreSQL database integration
-- [ ] ☁️ AWS / Azure deployment guides
+- [ ] ☁️ AWS / GCP / Azure deployment guides
 
 ---
 
@@ -314,10 +314,10 @@ MIT License © 2026 Zenith Agri Team — See [LICENSE](LICENSE) for details.
 
 <div align="center">
 
-**Built with ❤️ for the farmers of Tamil Nadu 🌾**
+**Built with ❤️ for the farmers of India 🌾**
 
 ⭐ **Star this repo if it helped you!**
 
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/zenith-agri-ams?style=social)](https://github.com/yourusername/zenith-agri-ams)
+[![GitHub stars](https://img.shields.io/github/stars/hari14official/zenith-agri-ams?style=social)](https://github.com/hari14official/zenith-agri-ams)
 
 </div>
