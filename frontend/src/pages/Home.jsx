@@ -6,6 +6,21 @@ import AgribusinessInfo from '../components/AgribusinessInfo';
 
 const Home = () => {
   const navigate = useNavigate();
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+  
+  const slides = [
+    "/images/hero1.jpg",
+    "/images/hero2.jpg",
+    "/images/hero3.jpg",
+    "/images/hero4.jpg"
+  ];
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [slides.length]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -24,14 +39,19 @@ const Home = () => {
       </nav>
 
       {/* Hero Section */}
-      <div className="relative pt-32 pb-20 md:pt-48 md:pb-32 flex items-center min-h-[90vh] overflow-hidden">
-        {/* Background Image & Overlay */}
+      <div className="relative pt-32 pb-20 md:pt-48 md:pb-32 flex items-center min-h-[90vh] overflow-hidden bg-stone-900">
+        {/* Background Image Slider & Overlay */}
         <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=2000"
-            alt="Agriculture Field"
-            className="w-full h-full object-cover"
-          />
+          {slides.map((slide, index) => (
+            <img
+              key={index}
+              src={slide}
+              alt={`Agriculture Slide ${index + 1}`}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                index === currentSlide ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          ))}
           <div className="absolute inset-0 bg-gradient-to-r from-stone-900/90 via-stone-900/70 to-transparent"></div>
         </div>
 

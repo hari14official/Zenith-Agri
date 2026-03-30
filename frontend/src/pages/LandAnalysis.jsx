@@ -1,27 +1,18 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { UploadCloud, Loader2, CheckCircle2, MapPin, CloudRain, Sun, ShieldAlert, BadgeCheck, Search } from 'lucide-react';
+import { UploadCloud, Loader2, CheckCircle2, MapPin, CloudRain, Sun, ShieldAlert, BadgeCheck, Search, Leaf } from 'lucide-react';
+import Markdown from 'markdown-to-jsx';
 
-// Leaflet config
-import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
-// Fix for default Leaflet marker icons in React
-import iconUrl from 'leaflet/dist/images/marker-icon.png';
-import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
-import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
+const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
+const OPEN_WEATHER_MAP_API_KEY = import.meta.env.VITE_OPENWEATHERMAP_API_KEY || '';
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || '';
 
-L.Icon.Default.mergeOptions({ iconRetinaUrl, iconUrl, shadowUrl });
-
-const LocationMarker = ({ position, setPosition }) => {
-  useMapEvents({
-    click(e) {
-      setPosition([e.latlng.lat, e.latlng.lng]);
-    },
-  });
-  return position === null ? null : <Marker position={position}></Marker>;
+const mapContainerStyle = {
+  width: '100%',
+  height: '100%'
 };
 
 const LandAnalysis = () => {
@@ -35,6 +26,104 @@ const LandAnalysis = () => {
   const [cropStep, setCropStep] = useState(1);
   const [cropFile, setCropFile] = useState(null);
   const [cropName, setCropName] = useState('');
+
+  const [weatherData, setWeatherData] = useState(null);
+  const [weatherError, setWeatherError] = useState(null);
+
+  const [suitableCrops, setSuitableCrops] = useState([]);
+  const [isGeneratingCrops, setIsGeneratingCrops] = useState(false);
+  const [selectedCrop, setSelectedCrop] = useState(null);
+  const [cropDetailsText, setCropDetailsText] = useState("");
+  const [isLoadingDetails, setIsLoadingDetails] = useState(false);
+
+  // Helper inside component to fetch AI predictions
+  const fetchGemini = async (prompt) => {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }]
+      })
+    });
+    const data = await response.json();
+    if (data.error) throw new Error(data.error.message);
+    return data.candidates[0].content.parts[0].text;
+  };
+
+  const generateCrops = async (weatherInfo) => {
+    if (!GEMINI_API_KEY) {
+      setSuitableCrops(['Paddy/Rice', 'Sugarcane', 'Cotton']);
+      return;
+    }
+    setIsGeneratingCrops(true);
+    try {
+      const prompt = `Based on a temperature of ${weatherInfo?.main?.temp}°C, humidity of ${weatherInfo?.main?.humidity}%, and location in ${weatherInfo?.name || "the region"}, provide a comma-separated list of the 3 to 5 most suitable crops to grow. ONLY return the crop names separated by commas, with no additional text or formatting.`;
+      const text = await fetchGemini(prompt);
+      const crops = text.split(',').map(c => c.trim().replace(/[^a-zA-Z\s-]/g, '')).filter(Boolean);
+      setSuitableCrops(crops);
+    } catch (e) {
+      console.error("Gemini failed, using defaults. ", e);
+      setSuitableCrops(['Paddy/Rice', 'Sugarcane', 'Cotton']);
+    } finally {
+      setIsGeneratingCrops(false);
+    }
+  };
+
+  const fetchCropDetails = async (cropName) => {
+    setSelectedCrop(cropName);
+    setIsLoadingDetails(true);
+    setCropDetailsText('');
+    
+    if (!GEMINI_API_KEY) {
+      setCropDetailsText(`### Missing VITE_GEMINI_API_KEY\n\nPlease add your \`VITE_GEMINI_API_KEY\` in the \`.env\` file to view real-time government-backed agricultural details for **${cropName}**.`);
+      setIsLoadingDetails(false);
+      return;
+    }
+
+    try {
+      const prompt = `Write a comprehensive, continuously flowing magazine-style article about cultivating **${cropName}** in ${weatherData?.name || 'the current region'} (Temperature: ${weatherData?.main?.temp}°C, Humidity: ${weatherData?.main?.humidity}%).
+      
+      Do NOT use a rigid Q&A format. Write it seamlessly flowing from one topic to the next.
+
+      Include the following sections in chronological order, using Markdown headings (##):
+      1. The Vision (Overview of the crop)
+      2. Cultivation & Seeding Process
+      3. Processing & Plant Care
+      4. Fertilizers & Chemical Management
+      5. Harvesting Protocol
+      6. Value Addition & Market Strategy
+      7. Government Schemes & Subsidies (Crucial: Include real-time state/central subsidies, percentages, and loan details like PM-KISAN, etc.)
+
+      IMPORTANT: You MUST insert exactly 3 high-quality relevant images inside the article using Markdown image syntax alongside the text. Use this exact image URL structure replacing the text with relevant tags:
+      ![Alt Text](https://loremflickr.com/800/400/tag1,tag2)
+      
+      Example Placements:
+      - Top of article: ![${cropName} Field](https://loremflickr.com/800/400/${cropName.replace(/\s+/g, '')},field)
+      - Cultivation Section: ![Cultivating ${cropName}](https://loremflickr.com/800/400/${cropName.replace(/\s+/g, '')},farmer)
+      - Harvesting Section: ![Harvesting ${cropName}](https://loremflickr.com/800/400/${cropName.replace(/\s+/g, '')},harvest)
+
+      Ensure all image tags are valid comma-separated words.
+      Make the article highly actionable, detailed, and formatted beautifully in Markdown.`;
+      
+      const text = await fetchGemini(prompt);
+      setCropDetailsText(text);
+    } catch (e) {
+      console.error(e);
+      setCropDetailsText(`### Failed to load AI details\n\nError: ${e.message}`);
+    } finally {
+      setIsLoadingDetails(false);
+    }
+  };
+
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: GOOGLE_MAPS_API_KEY
+  });
+
+  const onMapClick = React.useCallback((e) => {
+    setPosition([e.latLng.lat(), e.latLng.lng()]);
+  }, []);
 
   // Search state
   const [searchQuery, setSearchQuery] = useState('');
@@ -59,9 +148,29 @@ const LandAnalysis = () => {
     }
   };
 
-  const startSoilAnalysis = () => {
+  const startSoilAnalysis = async () => {
     setSoilStep(3);
-    setTimeout(() => setSoilStep(4), 3000);
+    setWeatherError(null);
+    let currentWeatherData = null;
+    try {
+      const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position[0]}&lon=${position[1]}&appid=${OPEN_WEATHER_MAP_API_KEY}&units=metric`);
+      if (!res.ok) throw new Error('API Key missing or invalid, using fallback data.');
+      const data = await res.json();
+      setWeatherData(data);
+      currentWeatherData = data;
+    } catch (err) {
+      console.warn('Weather fetch failed:', err);
+      setWeatherError(err.message);
+      currentWeatherData = {
+        main: { temp: 28.5, humidity: 45 },
+        weather: [{ description: "partly cloudy" }],
+        name: "Unknown Region"
+      };
+      setWeatherData(currentWeatherData);
+    } finally {
+      generateCrops(currentWeatherData);
+      setTimeout(() => setSoilStep(4), 2000);
+    }
   };
 
   const startCropAnalysis = () => {
@@ -251,13 +360,18 @@ const LandAnalysis = () => {
                 </div>
 
                 <div className="w-full h-[400px] border border-gray-300 rounded-2xl overflow-hidden mb-8 shadow-inner z-0">
-                  <MapContainer center={position} zoom={7} style={{ height: '100%', width: '100%' }}>
-                    <TileLayer
-                      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                    <LocationMarker position={position} setPosition={setPosition} />
-                  </MapContainer>
+                  {isLoaded ? (
+                    <GoogleMap
+                      mapContainerStyle={mapContainerStyle}
+                      center={{ lat: position[0], lng: position[1] }}
+                      zoom={7}
+                      onClick={onMapClick}
+                    >
+                      <Marker position={{ lat: position[0], lng: position[1] }} />
+                    </GoogleMap>
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-gray-100">Loading Map...</div>
+                  )}
                 </div>
 
                 <div className="flex justify-between items-center">
@@ -286,49 +400,60 @@ const LandAnalysis = () => {
             {/* Step 4: Results */}
             {soilStep === 4 && (
               <div className="animate-fade-in space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="bg-nature-900 text-white p-8 rounded-3xl shadow-lg relative overflow-hidden flex flex-col justify-center">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                  <div className="bg-nature-900 text-white p-8 rounded-3xl shadow-lg relative overflow-hidden flex flex-col justify-center lg:col-span-1 lg:sticky lg:top-6">
                     <h3 className="text-nature-200 text-sm font-semibold tracking-wider uppercase mb-1">Detected Profile</h3>
                     <h2 className="text-3xl font-bold mb-6">Loamy Soil Profile with Moderate Humidity</h2>
+                    {weatherError && <p className="text-red-300 text-xs mb-4">Note: {weatherError}</p>}
                     <ul className="space-y-4 font-light text-nature-50">
                       <li className="flex justify-between border-b border-nature-700 pb-2"><span>Soil Composition</span> <span className="font-semibold">60% Sand, 40% Clay/Silt</span></li>
-                      <li className="flex justify-between border-b border-nature-700 pb-2"><span>Moisture Index</span> <span className="font-semibold text-blue-300">45% (Moderate)</span></li>
-                      <li className="flex justify-between border-b border-nature-700 pb-2"><span>Local Climate</span> <span className="font-semibold text-yellow-300">28.5°C, Partly Cloudy</span></li>
-                      <li className="flex justify-between border-b border-nature-700 pb-2"><span>Region</span> <span className="font-semibold text-green-300">Tamil Nadu, India</span></li>
+                      <li className="flex justify-between border-b border-nature-700 pb-2"><span>Humidity Output</span> <span className="font-semibold text-blue-300">{weatherData?.main?.humidity || 45}%</span></li>
+                      <li className="flex justify-between border-b border-nature-700 pb-2"><span>Local Climate</span> <span className="font-semibold text-yellow-300 capitalize">{weatherData?.main?.temp}°C, {weatherData?.weather?.[0]?.description}</span></li>
+                      <li className="flex justify-between border-b border-nature-700 pb-2"><span>Region</span> <span className="font-semibold text-green-300">{weatherData?.name || "Selected Location"}</span></li>
                     </ul>
                   </div>
 
-                  <div className="bg-white p-8 rounded-3xl shadow-sm border border-nature-100">
+                  <div className="bg-white p-8 rounded-3xl shadow-sm border border-nature-100 flex flex-col min-h-full lg:col-span-2">
                     <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2"><Sun className="text-earth-500"/> Highly Suitable Crops Found</h3>
                     
-                    <div className="space-y-6">
-                      <div className="border border-green-100 bg-nature-50 rounded-2xl p-6 relative">
-                        <div className="absolute top-4 right-4 bg-green-200 text-green-800 text-xs font-bold px-2 py-1 rounded-lg">98% Match</div>
-                        <h4 className="text-lg font-bold text-gray-900 mb-2">Paddy / Rice</h4>
-                        <div className="mt-4 space-y-4">
-                          <div className="text-sm">
-                            <strong className="text-gray-900 block mb-1">🌱 Land Processing & Seeding</strong>
-                            <span className="text-gray-600 block">Prepare puddled fields in kharif season. Transplant 21-day-old seedlings at 20×15 cm spacing. Maintain 5 cm water depth.</span>
-                          </div>
-                          <div className="text-sm">
-                            <strong className="text-gray-900 block mb-1">💧 Watering Schedule</strong>
-                            <span className="text-gray-600 block">Maintain flooded conditions during vegetative stage. Allow aerobic dry-wet cycles during grain filling.</span>
-                          </div>
-                          <div className="text-sm bg-white p-3 rounded-lg border border-gray-100">
-                            <strong className="text-earth-700 block mb-1">🧪 Fertilizer Protocol</strong>
-                            <span className="text-gray-600 block"><strong>Product:</strong> NPK 17-17-17 + Urea top dressing.</span>
-                            <span className="text-gray-600 block"><strong>When:</strong> Basal dose at transplanting; split nitrogen at 25 & 45 DAT.</span>
-                            <span className="text-gray-600 block"><strong>Why:</strong> Ensures vigorous tillering, strong panicle emergence, and high grain weight.</span>
-                          </div>
+                    {isGeneratingCrops ? (
+                      <div className="flex flex-col items-center justify-center p-12 opacity-80 h-full">
+                        <Loader2 className="animate-spin text-earth-500 mb-4" size={40} />
+                        <p className="text-gray-600 font-medium animate-pulse text-center">Running AI topographical & weather matching...</p>
+                      </div>
+                    ) : (
+                      <>
+                        <div className="flex flex-wrap gap-3 mb-8">
+                          {suitableCrops.map((crop, idx) => (
+                            <button
+                              key={idx}
+                              onClick={() => fetchCropDetails(crop)}
+                              className={`px-5 py-3 rounded-xl font-bold transition-all shadow-sm border ${selectedCrop === crop ? 'bg-earth-500 text-white border-earth-600 scale-105 shadow-md' : 'bg-nature-50 text-nature-700 border-nature-200 hover:bg-earth-100 hover:text-earth-900'}`}
+                            >
+                              {crop}
+                            </button>
+                          ))}
                         </div>
-                      </div>
 
-                      <div className="border border-gray-200 bg-white rounded-2xl p-6 relative">
-                        <div className="absolute top-4 right-4 bg-yellow-100 text-yellow-800 text-xs font-bold px-2 py-1 rounded-lg">92% Match</div>
-                        <h4 className="text-lg font-bold text-gray-900 mb-2">Sugarcane</h4>
-                        <p className="text-gray-500 text-sm">Excellent secondary crop utilizing the loamy soil's water retention and Tamil Nadu's high solar radiation for superior sucrose accumulation.</p>
-                      </div>
-                    </div>
+                        <div className="flex-1 bg-gray-50/50 rounded-2xl border border-gray-200 p-8">
+                          {isLoadingDetails ? (
+                            <div className="flex flex-col items-center justify-center h-full opacity-80 py-20 min-h-[300px]">
+                              <Loader2 className="animate-spin text-earth-500 mb-6" size={48} />
+                              <p className="text-gray-600 font-medium text-center max-w-sm mx-auto">Fetching real-time government databases and cultivation protocols for {selectedCrop}...</p>
+                            </div>
+                          ) : cropDetailsText ? (
+                            <div className="prose prose-earth prose-sm sm:prose-base max-w-none prose-headings:text-earth-900 prose-headings:font-bold prose-h2:border-b prose-h2:border-earth-100 prose-h2:pb-2 prose-a:text-earth-600 prose-strong:text-gray-900">
+                              <Markdown>{cropDetailsText}</Markdown>
+                            </div>
+                          ) : (
+                            <div className="flex flex-col items-center justify-center h-full text-gray-400 text-center py-16 min-h-[300px]">
+                              <Leaf size={64} className="mb-6 opacity-20 text-earth-600" />
+                              <p className="max-w-md mx-auto font-medium text-gray-500 leading-relaxed">Select a crop above to instantly generate detailed cultivation plans, processing techniques, and real-time government subsidy intelligence dynamically using AI.</p>
+                            </div>
+                          )}
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
                 <button onClick={() => { setSoilStep(1); }} className="text-nature-600 font-semibold hover:underline text-sm">← Run New Analysis</button>

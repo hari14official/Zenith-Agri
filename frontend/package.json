@@ -9,14 +9,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google/genai": "^1.47.0",
+    "@react-google-maps/api": "^2.20.8",
+    "axios": "^1.14.0",
+    "framer-motion": "^12.38.0",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.300.0",
+    "markdown-to-jsx": "^9.7.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.20.0"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.19",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.32",

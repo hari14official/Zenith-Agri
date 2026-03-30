@@ -10,14 +10,20 @@ const FarmerDashboard = () => {
     <div className="flex flex-col min-h-screen bg-slate-50">
       <Navbar role="Farmer" />
       
-      {/* Hero Banner with farm image */}
-      <div className="relative w-full h-[55vh] bg-stone-900 overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=2000"
-          alt="Farm field at sunset"
-          className="w-full h-full object-cover opacity-70"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-nature-900/80 via-nature-900/50 to-transparent flex items-center">
+      {/* Hero Banner with farm video */}
+      <div className="relative w-full h-[50vh] bg-stone-900 overflow-hidden pointer-events-none">
+        
+        {/* using YouTube iframe for 100% guaranteed unblocked playback */}
+        <iframe 
+          className="absolute top-1/2 left-1/2 w-[120vw] h-[120vh] -translate-x-1/2 -translate-y-1/2 opacity-60 scale-125"
+          src="https://www.youtube.com/embed/n41v_IqC_9c?autoplay=1&mute=1&loop=1&playlist=n41v_IqC_9c&controls=0&showinfo=0&rel=0&modestbranding=1"
+          title="Agriculture Background"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+
+        <div className="absolute inset-0 bg-gradient-to-r from-nature-900/90 via-nature-900/60 to-transparent flex items-center z-10 pointer-events-auto">
           <div className="px-12 max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-nature-500/30 border border-nature-400/40 text-nature-200 text-xs font-bold uppercase tracking-widest mb-4">
               <Sprout size={12} />
@@ -75,21 +81,21 @@ const FarmerDashboard = () => {
                 icon: Leaf,
                 title: 'Land & Soil Analysis',
                 desc: 'Upload a soil photo and pin your location to receive AI-generated soil composition reports, crop suitability scores, and fertilization protocols tailored to Tamil Nadu conditions.',
-                img: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&q=80&w=600',
+                img: '/images/agri_3.jpg',
                 link: '/farmer/analysis',
               },
               {
                 icon: ShieldCheck,
                 title: 'Crop Disease Detection',
                 desc: 'Our deep computer vision model analyzes your crop leaf images to identify fungal, bacterial, or pest-related diseases, and recommends the exact chemical or organic treatment path.',
-                img: 'https://images.unsplash.com/photo-1592982537447-6f29efcb9693?auto=format&fit=crop&q=80&w=600',
+                img: '/images/agri_8.jpg',
                 link: '/farmer/analysis',
               },
               {
                 icon: TrendingUp,
                 title: 'Knowledge Hub',
                 desc: 'Explore curated research articles by agronomy experts on variety testing, high-yield protocols, pest management, organic farming, and weather-synchronized cultivation strategies.',
-                img: 'https://images.unsplash.com/photo-1586227740560-8cf2732c1531?auto=format&fit=crop&q=80&w=600',
+                img: '/images/agri_10.jpg',
                 link: '/farmer/hub',
               },
             ].map((feat, i) => {
@@ -133,7 +139,7 @@ const FarmerDashboard = () => {
             
             <div onClick={() => window.location.href = '/farmer/hub'} className="bg-white p-8 rounded-3xl shadow-lg border border-nature-100 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 cursor-pointer group">
               <div className="h-48 bg-nature-100 rounded-2xl mb-6 flex items-center justify-center overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1536640712-4d4c36ef0e2c?auto=format&fit=crop&q=80&w=500" alt="Rice" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+                <img src="/images/paddy.jpg" alt="Rice" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
               </div>
               <h4 className="text-xl font-extrabold text-gray-900 mb-3 group-hover:text-nature-600 transition-colors">Paddy Farming in Tamil Nadu</h4>
               <p className="text-gray-500 text-sm mb-6 line-clamp-2 leading-relaxed font-light">Best practices for paddy cultivation emphasizing water management and pest control using modern techniques suited for Tamil Nadu's agro-climatic zones.</p>
@@ -145,7 +151,7 @@ const FarmerDashboard = () => {
 
             <div onClick={() => window.location.href = '/farmer/hub'} className="bg-white p-8 rounded-3xl shadow-lg border border-nature-100 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 cursor-pointer group">
               <div className="h-48 bg-nature-100 rounded-2xl mb-6 flex items-center justify-center overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1592688086082-996ff7638d97?auto=format&fit=crop&q=80&w=500" alt="Tomatoes" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+                <img src="/images/tomato.jpg" alt="Tomatoes" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
               </div>
               <h4 className="text-xl font-extrabold text-gray-900 mb-3 group-hover:text-nature-600 transition-colors">High-Yield Tomatoes</h4>
               <p className="text-gray-500 text-sm mb-6 line-clamp-2 leading-relaxed font-light">Implement drip irrigation and organic fertilizers synchronized with climate mapping to dramatically increase per-acre tomato yields.</p>
@@ -157,7 +163,7 @@ const FarmerDashboard = () => {
 
             <div onClick={() => window.location.href = '/farmer/hub'} className="bg-white p-8 rounded-3xl shadow-lg border border-nature-100 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 cursor-pointer group">
               <div className="h-48 bg-nature-100 rounded-2xl mb-6 flex items-center justify-center overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&q=80&w=500" alt="Sugarcane" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+                <img src="/images/sugarcane.jpg" alt="Sugarcane" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
               </div>
               <h4 className="text-xl font-extrabold text-gray-900 mb-3 group-hover:text-nature-600 transition-colors">Sugarcane Yield Optimization</h4>
               <p className="text-gray-500 text-sm mb-6 line-clamp-2 leading-relaxed font-light">Advanced ratoon management and integrated nutrient supply systems for achieving record sugarcane tonnage in South Indian conditions.</p>

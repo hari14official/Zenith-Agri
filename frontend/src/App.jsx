@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ExploreMore from './pages/ExploreMore';
+import About from './pages/About';
 
 function App() {
   return (
@@ -22,11 +23,13 @@ function App() {
           {/* Admin Routes */}
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/hub" element={<KnowledgeHub role="Admin" />} />
+          <Route path="/admin/about" element={<About role="Admin" />} />
           
           {/* Farmer Routes */}
           <Route path="/farmer" element={<FarmerDashboard />} />
           <Route path="/farmer/hub" element={<KnowledgeHub role="Farmer" />} />
           <Route path="/farmer/analysis" element={<LandAnalysis />} />
+          <Route path="/farmer/about" element={<About role="Farmer" />} />
         </Routes>
       </div>
     </Router>

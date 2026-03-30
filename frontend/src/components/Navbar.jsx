@@ -1,14 +1,16 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, BookOpen, Map, Settings, LogOut, Sprout } from 'lucide-react';
+import { LayoutDashboard, BookOpen, Map, Settings, LogOut, Sprout, Info } from 'lucide-react';
 
 const Navbar = ({ role }) => {
   const navigate = useNavigate();
   const links = role === 'Admin' ? [
+    { name: 'About', path: '/admin/about', icon: Info },
     { name: 'Dashboard', path: '/admin', icon: LayoutDashboard },
     { name: 'Knowledge Hub', path: '/admin/hub', icon: BookOpen },
     { name: 'Settings', path: '/admin/settings', icon: Settings },
   ] : [
+    { name: 'About', path: '/farmer/about', icon: Info },
     { name: 'Dashboard', path: '/farmer', icon: LayoutDashboard },
     { name: 'AI Analysis', path: '/farmer/analysis', icon: Map },
     { name: 'Knowledge Hub', path: '/farmer/hub', icon: BookOpen },

@@ -2,23 +2,22 @@
 
 <img src="https://img.shields.io/badge/Zenith-Agri-2d6a4f?style=for-the-badge&logo=leaf&logoColor=white" height="45"/>
 
-# 🌾 Zenith Agri — Agriculture Management System
+# 🌾 Zenith Agri — Smart Agriculture Intelligence
 
-**An AI-powered, full-stack agriculture intelligence platform for smart farming, land analysis, crop health diagnostics, and agronomy knowledge — built for Tamil Nadu's diverse agro-climatic zones.**
+**A premium, AI-powered agriculture platform for smart farming, precise land analysis, crop health diagnostics, and expert agronomy knowledge — optimized for unblocked, high-performance delivery.**
 
 <br/>
 
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=white)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
-[![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![Google Maps](https://img.shields.io/badge/Google_Maps-API-4285F4?style=flat-square&logo=googlemaps&logoColor=white)](https://developers.google.com/maps)
+[![OpenWeatherMap](https://img.shields.io/badge/Weather-API-EB6E4B?style=flat-square&logo=openweathermap&logoColor=white)](https://openweathermap.org/api)
+[![Gemini AI](https://img.shields.io/badge/Gemini_AI-API-8E75C2?style=flat-square&logo=google-gemini&logoColor=white)](https://ai.google.dev/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
-[![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=flat-square&logo=docker&logoColor=white)](https://docker.com)
-[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
 <br/>
 
-> 🚀 **Live Preview:** `http://localhost:5173` (dev) &nbsp;·&nbsp; `http://localhost:80` (Docker)
+> 🚀 **Live Preview:** `http://localhost:5173` &nbsp;·&nbsp; **High-Reliability Mode:** Local Static Assets + YouTube Video
 
 </div>
 
@@ -26,346 +25,101 @@
 
 ## ✨ Features
 
-| 🤖 AI Analysis | 📚 Knowledge Hub |
+| 🤖 AI & Weather Analysis | 📚 Knowledge Hub |
 |---|---|
-| Soil photo upload with GPS-based crop recommendations | 6+ expert articles with deep multi-section content |
-| Crop disease detection via computer vision | Real-time full-text search across all articles |
-| Tamil Nadu map default (OpenStreetMap + Leaflet) | Category filter tabs (Grains, Vegetables, Fruits...) |
-| Search location by name via Nominatim API | "Explore Details" opens full multi-page article view |
+| **Google Maps Integration:** Precise location picking and place search | **Expanded Library:** 6+ deep-dive expert articles (Paddy, Tomato...) |
+| **Real-time Weather:** Live feeds via OpenWeatherMap API | **Premium Layout:** 50vh hero images & full-width section images |
+| **Gemini AI Engine:** Detailed cultivation, fertilization, and harvesting guides | **Rich Content:** Sourced from TNAU, ICAR, and Ministry of Agriculture |
+| **Crop Suitability:** Real-time analysis of soil + weather vs crop needs | **Instant Search:** Full-text search and category filtering |
 
-| 🗺️ Interactive Map | 🎨 Premium Design |
+| 🗺️ Advanced Dashboard | 🏗️ Reliable Media Delivery |
 |---|---|
-| Click to drop pin anywhere on the map | Split-screen Login/Signup with agri background |
-| Search and auto-navigate by city or region name | 3-column Navbar: Brand · Links · Sign Out |
-| Coordinate input for precision selection | Stats cards, hover animations, glassmorphism |
-| Defaults to Tamil Nadu coordinates | AgribusinessInfo ERP delivery timeline |
+| **Farmer/Admin Roles:** Customized layouts for different user types | **Local Images:** Curated local assets in `public/images/` for 100% uptime |
+| **Dynamic About Page:** Full mission overview, advantages, and tech specs | **YouTube Backgrounds:** ISP-unblocked agriculture video playback |
+| **Interactive Navbar:** Context-aware navigation with "About" section | **Asset Locking:** Consistent static images across all reloads |
+| **Scheme Guidance:** Integrated state and central government subsidy tracking | **Zero Placeholders:** High-quality, real-world agricultural photography |
 
 ---
 
-## 🏗️ Project Architecture
 
-```
-AMS/
-├── 📁 frontend/                     # React + Vite + TailwindCSS
-│   ├── src/
-│   │   ├── pages/
-│   │   │   ├── Home.jsx             # Landing: hero, stats, modules
-│   │   │   ├── Login.jsx            # Split-screen auth
-│   │   │   ├── Signup.jsx           # Registration + role selection
-│   │   │   ├── FarmerDashboard.jsx  # Analytics, stats, research cards
-│   │   │   ├── AdminDashboard.jsx   # Admin control panel
-│   │   │   ├── LandAnalysis.jsx     # AI soil + crop (Leaflet map)
-│   │   │   ├── KnowledgeHub.jsx     # Research library + search
-│   │   │   └── ExploreMore.jsx      # Platform showcase
-│   │   └── components/
-│   │       ├── Navbar.jsx           # Sticky 3-column responsive navbar
-│   │       ├── Footer.jsx           # Site footer
-│   │       └── AgribusinessInfo.jsx # ERP delivery model section
-│   ├── Dockerfile                   # Multi-stage Node → Nginx
-│   └── nginx.conf                   # SPA routing + API proxy
-│
-├── 📁 backend/                      # FastAPI + Python 3.11
-│   ├── main.py                      # API routes, CORS, SPA host
-│   ├── requirements.txt             # Python dependencies
-│   ├── schema.sql                   # Database schema
-│   └── Dockerfile                   # Python 3.11-slim container
-│
-├── docker-compose.yml               # Frontend + Backend orchestration
-├── .dockerignore                    # Excludes venv, node_modules
-└── README.md                        # This file
+## 🛠️ Environment Configuration
+
+Create a `.env` file in the `frontend/` directory:
+
+```env
+VITE_GOOGLE_MAPS_API_KEY=your_google_maps_key
+VITE_OPENWEATHERMAP_API_KEY=your_weather_api_key
+VITE_GEMINI_API_KEY=your_gemini_api_key
 ```
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Installation & Setup
 
-| Layer | Technology | Purpose |
-|---|---|---|
-| **Frontend** | React 18 + Vite 5 | Fast SPA with Hot Module Replacement |
-| **Styling** | TailwindCSS 3 | Utility-first responsive design system |
-| **Icons** | Lucide React | 300+ modern SVG icons |
-| **Maps** | Leaflet.js + React-Leaflet | Interactive geolocation maps |
-| **Routing** | React Router v6 | Client-side SPA navigation |
-| **Backend** | FastAPI (Python 3.11) | High-performance async REST API |
-| **ASGI Server** | Uvicorn | Production-grade Python server |
-| **Validation** | Pydantic v2 | Request/response schema validation |
-| **Containers** | Docker + Compose | Reproducible multi-service deployment |
-| **Web Server** | Nginx Alpine | Static serving + API reverse proxy |
-
----
-
-## 🚀 Quick Start
-
-### Option A — Local Development
-
-**Prerequisites:** Node.js 20+ · Python 3.11+
-
+### 1. Clone & Install
 ```bash
-# Clone
-git clone https://github.com/yourusername/zenith-agri-ams.git
-cd zenith-agri-ams
-```
-
-**Backend:**
-```bash
-cd backend
-python -m venv venv
-
-# Activate (Windows)
-venv\Scripts\activate
-# Activate (macOS/Linux)
-source venv/bin/activate
-
-pip install -r requirements.txt
-uvicorn main:app --reload --port 8000
-```
-> 📖 API Docs: **http://localhost:8000/docs**
-
-**Frontend** (new terminal):
-```bash
-cd frontend
+git clone https://github.com/hari14official/Zenith-Agri.git
+cd Zenith-Agri/frontend
 npm install
+```
+
+### 2. Prepare Media Assets (Critical)
+To ensure all high-quality images show up even if generic image CDNs are blocked on your network, run the local downloader:
+
+```bash
+# This downloads all required agricultural photography to public/images/
+node download.js
+```
+
+### 3. Launch Development Server
+```bash
 npm run dev
 ```
 > 🌐 App: **http://localhost:5173**
 
 ---
 
-### Option B — Docker (One Command) 🐳
+## 🔌 API Integrations
 
-**Prerequisites:** [Docker Desktop](https://www.docker.com/products/docker-desktop)
-
-```bash
-git clone https://github.com/yourusername/zenith-agri-ams.git
-cd zenith-agri-ams
-docker compose up --build
-```
-
-| Service | URL |
-|---|---|
-| 🌐 Frontend (Nginx) | http://localhost:80 |
-| ⚙️ Backend API | http://localhost:8000 |
-| 📖 Swagger Docs | http://localhost:8000/docs |
-| 📘 ReDoc | http://localhost:8000/redoc |
-
-```bash
-# Stop everything
-docker compose down
-
-# Rebuild after changes
-docker compose up --build --force-recreate
-
-# View logs
-docker compose logs -f
-
-# Individual service logs
-docker compose logs -f backend
-docker compose logs -f frontend
-```
-
----
-
-## 🔌 API Reference
-
-| Method | Endpoint | Description | Auth |
-|---|---|---|---|
-| `POST` | `/api/auth/login` | Authenticate user · returns JWT | ❌ |
-| `GET` | `/api/admin/dashboard` | Admin stats: articles, farmers, activity | Admin |
-| `POST` | `/api/admin/articles` | Publish new agronomy article | Admin |
-| `GET` | `/api/articles` | Fetch all published research | Any |
-| `POST` | `/api/farmer/analyze` | AI analysis: soil image + GPS coords | Farmer |
-
-#### Sample Request — Analyze Land
-```bash
-curl -X POST "http://localhost:8000/api/farmer/analyze" \
-  -F "lat=11.1271" \
-  -F "lng=78.6569" \
-  -F "image=@soil_photo.jpg"
-```
-
-<details>
-<summary>📄 Sample Response</summary>
-
-```json
-{
-  "soil_type": "Loamy",
-  "moisture_level": "Moderate",
-  "current_weather": {
-    "temperature": 28.5,
-    "condition": "Partly Cloudy",
-    "humidity": 65
-  },
-  "recommended_crops": [
-    { "crop_name": "Paddy", "match_score": "98%", "article_id": 1 },
-    { "crop_name": "Sugarcane", "match_score": "92%", "article_id": 5 }
-  ],
-  "actionable_steps": {
-    "fertilizer": "Apply NPK 17-17-17 + Urea top dressing at transplanting",
-    "watering_schedule": "Maintain 2-5 cm flooding during vegetative stage",
-    "cultivation_process": "Prepare puddled fields, transplant at 20x15cm spacing"
-  }
-}
-```
-
-</details>
-
----
-
-## 📱 Application Pages
-
-### 🏠 Home
-Full-screen hero · Stats bar (12,500+ farms, 40% water saved) · Modules section · AgribusinessInfo ERP timeline
-
-### 🔐 Login / Signup
-Split-screen card · Agricultural background · Google SSO placeholder · Role selection (Farmer / Admin)
-
-### 🌾 Farmer Dashboard
-Hero banner · 4 KPI stat cards · 3 feature cards with images · Tamil Nadu research article previews
-
-### 🗺️ AI Land Analysis (4 steps)
-1. Upload soil photo  →  2. Select location (map + search + coords)  →  3. AI inference  →  4. Soil report + crop guide
-
-### 🔬 Crop Health Diagnosis
-Enter crop name → Upload leaf photo → CV analysis → Disease name + treatment protocol + product recommendation
-
-### 📚 Knowledge Hub
-50vh hero image · Search bar · Category filter · Article grid → Full article with 5–7 illustrated sections
-
-### 🌍 Explore More
-Platform overview · Feature grid with images · Crops gallery · Sustainable breeding · CTA
-
----
-
-## 📂 Route Map
-
-| Route | Page | Role |
+| Provider | Service | Implementation |
 |---|---|---|
-| `/` | Home | Public |
-| `/login` | Login | Public |
-| `/signup` | Signup | Public |
-| `/explore` | Explore More | Public |
-| `/farmer` | Farmer Dashboard | Farmer |
-| `/farmer/analysis` | AI Land Analysis | Farmer |
-| `/farmer/hub` | Knowledge Hub | Farmer |
-| `/admin` | Admin Dashboard | Admin |
-| `/admin/hub` | Knowledge Hub (Admin) | Admin |
+| **Google Maps** | Maps JavaScript API | Interactive coordinate marking & Places search |
+| **OpenWeatherMap** | One Call API 3.0 | Real-time temp, humidity, and atmospheric pressure |
+| **Google Gemini** | Generative AI SDK | Complex soil analysis and detailed article generation |
+| **YouTube** | Iframe Player API | Reliable, unblocked agriculture background video |
+| **Picsum/Unsplash** | Localized Images | Curated static assets via `download.js` |
 
 ---
 
-## 🗄️ Database Schema
+## 🗺️ Roadmap Update & Future Vision
 
-```sql
--- Users
-CREATE TABLE users (
-    id         INTEGER PRIMARY KEY AUTOINCREMENT,
-    name       TEXT NOT NULL,
-    email      TEXT UNIQUE NOT NULL,
-    password   TEXT NOT NULL,
-    role       TEXT CHECK(role IN ('Admin','Farmer')) NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+### 🚀 Completed (Phase 1)
+- [x] 🌦️ **Live OpenWeatherMap API integration** - Real-time meteorological feeds.
+- [x] 🗺️ **Google Maps API** - Precise location Marking & Places API search.
+- [x] 🤖 **Gemini AI Engine** - Detailed cultivation, fertilization, and harvesting guides.
+- [x] 🖼️ **High-reliability Media Delivery** - Local photography assets & YouTube Iframe background.
+- [x] 📖 **Expanded Knowledge Hub** - Comprehensive agronomy research for 6+ crops.
+- [x] 🏗️ **Dedicated "About" Platform Overview** - Full breakdown of Zenith Agri's mission.
 
--- Research Articles (Admin-authored)
-CREATE TABLE research_articles (
-    id                      INTEGER PRIMARY KEY AUTOINCREMENT,
-    admin_id                INTEGER REFERENCES users(id),
-    crop_name               TEXT NOT NULL,
-    ideal_soil_type         TEXT,
-    required_moisture_level TEXT,
-    ideal_climate           TEXT,
-    season                  TEXT,
-    cultivation_process     TEXT,
-    created_at              DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+### 📅 Next (Phase 2 - Intelligence & Accessibility)
+- [ ] 🌐 **Tamil (தமிழ்) & Hindi (हिन्दी) Localization** - Full multi-language support.
+- [ ] 📊 **Market Price Forecasting** - AI-driven prediction for mandi prices (APMC).
+- [ ] 📤 **Export Reports as PDF** - One-click soil analysis and guide export.
+- [ ] 📱 **Progressive Web App (PWA)** - Native feel with offline article access.
+- [ ] 🔐 **Full JWT Authentication** - Secure tokens with session persistence.
 
--- Fertilizers (linked to articles)
-CREATE TABLE fertilizers (
-    id                 INTEGER PRIMARY KEY AUTOINCREMENT,
-    article_id         INTEGER REFERENCES research_articles(id),
-    name               TEXT NOT NULL,
-    usage_instructions TEXT
-);
-
--- AI Analysis History
-CREATE TABLE analysis_history (
-    id                INTEGER PRIMARY KEY AUTOINCREMENT,
-    farmer_id         INTEGER REFERENCES users(id),
-    latitude          REAL,
-    longitude         REAL,
-    detected_soil     TEXT,
-    detected_moisture TEXT,
-    weather_json      TEXT,
-    created_at        DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-```
-
----
-
-## 🤝 Contributing
-
-```bash
-# Fork → Clone → Branch
-git checkout -b feat/my-feature
-
-# Make changes, then commit
-git commit -m "feat: add my feature"
-
-# Push and open a Pull Request
-git push origin feat/my-feature
-```
-
-**Commit Convention:**
-
-| Prefix | Using For |
-|---|---|
-| `feat:` | New features |
-| `fix:` | Bug fixes |
-| `docs:` | Documentation |
-| `style:` | UI/CSS changes |
-| `refactor:` | Code cleanup |
-| `chore:` | Config / build |
-
----
-
-## 🗺️ Roadmap
-
-- [ ] 🔐 JWT auth with refresh tokens
-- [ ] 🌦️ Live OpenWeatherMap API integration
-- [ ] 🤖 TensorFlow soil classification model
-- [ ] 📊 Recharts yield analytics dashboard
-- [ ] 🌐 Tamil language (தமிழ்) localization
-- [ ] 📱 PWA (Progressive Web App)
-- [ ] 📤 Export analysis reports as PDF
-- [ ] 🔔 Push notifications for disease alerts
-- [ ] 🗃️ PostgreSQL database integration
-- [ ] ☁️ AWS / Azure deployment guides
-
----
-
-## 👨‍💻 Acknowledgements
-
-| Resource | Purpose |
-|---|---|
-| [Unsplash](https://unsplash.com) | High-quality agriculture photography |
-| [OpenStreetMap](https://openstreetmap.org) | Free tile maps for Leaflet.js |
-| [Nominatim](https://nominatim.openstreetmap.org) | Free reverse geocoding / location search |
-| [Lucide React](https://lucide.dev) | Beautiful open-source SVG icons |
-| [TNAU Agri Portal](http://agritech.tnau.ac.in) | Tamil Nadu cultivation protocol data |
+### 🔭 Future (Phase 3 - IoT & Marketplace)
+- [ ] 🕹️ **IoT Smart Irrigation Controls** - Remote pump control via mobile app integration.
+- [ ] 🛒 **Direct-to-Consumer Marketplace** - Build a store for farmers to sell produce without middlemen.
+- [ ] 🛰️ **Drone Imagery Analysis** - Upload aerial photos for farm-wide crop health maps.
+- [ ] 💬 **Voice-First AI Assistant** - Hands-free voice commands for interaction in the field.
+- [ ] 📈 **Financial Profitability Dashboard** - Track input costs vs yields for every hectare.
+- [ ] 🔔 **Regional Pest Outbreak Alerts** - Real-time push notifications of threats in your district.
+- [ ] 📦 **Inventory Management System** - Track seed, fertilizer, and equipment stocks.
 
 ---
 
 ## 📄 License
 
-MIT License © 2026 Zenith Agri Team — See [LICENSE](LICENSE) for details.
-
----
-
-<div align="center">
-
-**Built with ❤️ for the farmers of Tamil Nadu 🌾**
-
+MIT License © 2026 Zenith Agri Team — Built for the farmers of India
 ⭐ **Star this repo if it helped you!**
-
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/zenith-agri-ams?style=social)](https://github.com/yourusername/zenith-agri-ams)
-
-</div>
