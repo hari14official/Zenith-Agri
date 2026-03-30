@@ -4,7 +4,11 @@
 
 # 🌾 Zenith Agri — Smart Agriculture Intelligence
 
+<<<<<<< HEAD
 **A premium, AI-powered agriculture platform for smart farming, precise land analysis, crop health diagnostics, and expert agronomy knowledge — optimized for unblocked, high-performance delivery.**
+=======
+**An AI-powered, full-stack agriculture intelligence platform for smart farming, land analysis, crop health diagnostics, and agronomy knowledge — built for India's diverse agro-climatic zones.**
+>>>>>>> 025017c5aa12fc513dc4bf00e982a1098a0dd70d
 
 <br/>
 
@@ -41,6 +45,7 @@
 
 ---
 
+<<<<<<< HEAD
 
 ## 🛠️ Environment Configuration
 
@@ -53,6 +58,8 @@ VITE_GEMINI_API_KEY=your_gemini_api_key
 ```
 
 ---
+=======
+>>>>>>> 025017c5aa12fc513dc4bf00e982a1098a0dd70d
 
 ## 🚀 Installation & Setup
 
@@ -91,6 +98,7 @@ npm run dev
 
 ---
 
+<<<<<<< HEAD
 ## 🗺️ Roadmap Update & Future Vision
 
 ### 🚀 Completed (Phase 1)
@@ -116,10 +124,79 @@ npm run dev
 - [ ] 📈 **Financial Profitability Dashboard** - Track input costs vs yields for every hectare.
 - [ ] 🔔 **Regional Pest Outbreak Alerts** - Real-time push notifications of threats in your district.
 - [ ] 📦 **Inventory Management System** - Track seed, fertilizer, and equipment stocks.
+=======
+
+## 🤝 Contributing
+
+```bash
+# Fork → Clone → Branch
+git checkout -b feat/my-feature
+
+# Make changes, then commit
+git commit -m "feat: add my feature"
+
+# Push and open a Pull Request
+git push origin feat/my-feature
+```
+
+**Commit Convention:**
+
+| Prefix | Using For |
+|---|---|
+| `feat:` | New features |
+| `fix:` | Bug fixes |
+| `docs:` | Documentation |
+| `style:` | UI/CSS changes |
+| `refactor:` | Code cleanup |
+| `chore:` | Config / build |
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] 🔐 JWT auth with refresh tokens
+- [ ] 🌦️ Live OpenWeatherMap API integration
+- [ ] 🤖 TensorFlow soil classification model
+- [ ] 📊 Recharts yield analytics dashboard
+- [ ] 🌐 Tamil language (தமிழ்) localization
+- [ ] 📱 PWA (Progressive Web App)
+- [ ] 📤 Export analysis reports as PDF
+- [ ] 🔔 Push notifications for disease alerts
+- [ ] 🗃️ PostgreSQL database integration
+- [ ] ☁️ AWS / GCP / Azure deployment guides
+
+---
+
+## 👨‍💻 Acknowledgements
+
+| Resource | Purpose |
+|---|---|
+| [Unsplash](https://unsplash.com) | High-quality agriculture photography |
+| [OpenStreetMap](https://openstreetmap.org) | Free tile maps for Leaflet.js |
+| [Nominatim](https://nominatim.openstreetmap.org) | Free reverse geocoding / location search |
+| [Lucide React](https://lucide.dev) | Beautiful open-source SVG icons |
+| [TNAU Agri Portal](http://agritech.tnau.ac.in) | Tamil Nadu cultivation protocol data |
+>>>>>>> 025017c5aa12fc513dc4bf00e982a1098a0dd70d
 
 ---
 
 ## 📄 License
 
+<<<<<<< HEAD
 MIT License © 2026 Zenith Agri Team — Built for the farmers of India
 ⭐ **Star this repo if it helped you!**
+=======
+MIT License © 2026 Zenith Agri Team — See [LICENSE](LICENSE) for details.
+
+---
+
+<div align="center">
+
+**Built with ❤️ for the farmers of India 🌾**
+
+⭐ **Star this repo if it helped you!**
+
+[![GitHub stars](https://img.shields.io/github/stars/hari14official/zenith-agri-ams?style=social)](https://github.com/hari14official/zenith-agri-ams)
+
+</div>
+>>>>>>> 025017c5aa12fc513dc4bf00e982a1098a0dd70d
