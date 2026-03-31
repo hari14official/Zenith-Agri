@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { BookOpen, Search, ArrowLeft, ChevronRight, Droplet, Sun, Leaf } from 'lucide-react';
+import { BookOpen, Search, ArrowLeft, ChevronRight, Sun, Leaf } from 'lucide-react';
 
 const articles = [
   {
@@ -48,6 +49,36 @@ const articles = [
         heading: "Government Schemes and Subsidies (Central & State)",
         body: "PM-KISAN: ₹6,000/year direct income support in 3 installments. PMFBY (Pradhan Mantri Fasal Bima Yojana): Paddy insurance at 2% premium — covers losses from natural calamities, pests, and diseases. Tamil Nadu Adi Dravidar Subsidy: 100% input subsidy for SC/ST paddy farmers including seeds, fertilizers, and micro-nutrients. TNAU e-Krishi: Free mobile soil testing and fertilizer recommendation service. CM's Comprehensive Crop Insurance: Covers crop loss up to ₹1,00,000/ha for paddy farmers in Tamil Nadu.",
       },
+      {
+        heading: "Export Standards and Global Rice Markets",
+        body: "To enter the premium export market in the Middle East and Europe, paddy must strictly adhere to maximum residue limits (MRLs). EU standards specifically monitor Tricyclazole and Buprofezin levels. Transitioning to 'Zero-Budget Natural Farming' or organic models in Year 3 allows farmers to access export price points of $1,200–$1,800 per metric tonne for varieties like Seeraga Samba and Ponni. APEDA certification and traceability through blockchain-based apps are becoming mandatory for high-value rice exports from the Cauvery delta.",
+        img: "/images/agri_1.jpg",
+      },
+      {
+        heading: "Climate Resilience and Stress Management",
+        body: "Tamil Nadu's rice bowl is increasingly prone to salinity and drought. Adopt salt-tolerant varieties like TRY 1 and TRY 3 for coastal districts (Nagapattinam, Cuddalore). During drought years, switch from long-duration varieties to short-duration ones (105–115 days) like ADT 53 to escape terminal heat stress. Carbon sequestration through minimum tillage and brown manuring not only improves soil health but also qualifies farms for international carbon credits, providing an additional ₹2,000–₹5,000/ha income stream.",
+      },
+      {
+        heading: "Advanced Mechanization and Drone Technology",
+        body: "The labor shortage in Tamil Nadu has necessitated full mechanization. Direct Seeded Rice (DSR) using drum seeders or power tillers eliminates nursery costs. Drone-based spraying of nano-urea and bio-pesticides at 10 litres/acre provides 95% uniform coverage compared to manual knapsack sprayers. Solar-powered robotic weeders are being trialed at TNAU Coimbatore for high-density SRI plots. Investing in a community-owned combine harvester through NABARD-subsidized FPOs ensures timely harvest avoiding monsoon-induced shattering losses.",
+        img: "/images/agri_5.jpg",
+      },
+      {
+        heading: "Harvesting and Post-Harvest Management",
+        body: "Harvesting should be done when the moisture content of the paddy grains is around 20-22%. This ensures optimal grain quality and minimizes losses due to shattering. Use combine harvesters for efficiency, especially in large-scale farms in the Thanjavur region. Post-harvest, grains must be dried to 14% moisture for safe storage in moisture-proof containers or silos. Parboiling paddy can enhance its nutritional value and marketability.",
+      },
+      {
+        heading: "Precision Irrigation with IoT",
+        body: "Modern paddy farming leverages IoT sensors for precise water management. Soil moisture sensors and automated gate valves allow for Alternate Wetting and Drying (AWD) without manual intervention. This not only saves up to 30% water but also reduces methane emissions, making rice cultivation more environmentally sustainable. Zenith Agri's dashboard integrates these sensor feeds for real-time monitoring.",
+      },
+      {
+        heading: "Nutrient Optimization & Fertigation",
+        body: "Precision fertigation involves applying fertilizers through the irrigation water, ensuring nutrients reach the root zone directly. For paddy, split application of nitrogen (N) at critical growth stages like tillering and panicle initiation is essential. Use the leaf color chart (LCC) to determine nitrogen needs accurately. Supplementing with bio-fertilizers like Azospirillum and Phosphobacteria can reduce chemical nitrogen requirements by 25%.",
+      },
+      {
+        heading: "Biotechnology & Varietal Improvement",
+        body: "Advances in biotechnology have led to the development of climate-resilient paddy varieties. Stress-tolerant rice (STR) varieties can withstand prolonged flooding or drought. Genomic selection and CRISPR/Cas9 are being used at TNAU to create varieties with higher nutrient density and pest resistance. Adopting these improved breeds is the first step toward future-proofing your farm against climate change.",
+      }
     ],
   },
   {
@@ -90,6 +121,20 @@ const articles = [
         heading: "Government Assistance and Subsidies",
         body: "Tamil Nadu Horticulture Department: 50% subsidy on drip irrigation installation (max ₹55,000/ha for SC/ST). Seeds/Seedlings: 50% subsidy on certified hybrid seeds under MIDH scheme. PMFBY: Tomato insurance at 5% premium from farmers — covers frost, hailstorm, pest outbreaks. National Horticulture Mission (NHM): Subsidy on shade nets, mulch film, and staking materials up to ₹40,000/ha. Farmer Producer Organizations (FPOs) registered under Tamil Nadu Co-operative Society Act get additional 25% price premium via direct procurement.",
       },
+      {
+        heading: "Protected Cultivation: Greenhouses and Shade Nets",
+        body: "For year-round production and maximum quality, adopt shade net or polyhouse cultivation. A 1,000 sq.m. shade net house can produce 8–10 tonnes of tomatoes annually. This environment provides 30–40% cooler temperatures during peak summer in districts like Erode and Karur, preventing flower drop. Integrated pest management is easier in protected environments, reducing chemical dependence by 70%. TNHB offers 50% subsidy for polyhouse construction under the MIDH scheme.",
+        img: "/images/agri_9.jpg",
+      },
+      {
+        heading: "Post-Harvest Logistics and Cold Chain",
+        body: "Post-harvest losses in tomatoes can reach 30–40% during Tamil Nadu summers. Use plastic crates for transport instead of gunny bags to prevent bruising. Pre-cooling to 10–12°C within 6 hours of harvest extends shelf life from 5 days to 21 days. Investing in a solar-powered walk-in cold room via NHM subsidy ensures you can wait for better market prices during peak harvest gluts.",
+      },
+      {
+        heading: "Urban Farming and Terrace Adaptation",
+        body: "For city-based hobbyist farmers or small-scale urban homesteads, tomatoes are the perfect crop. Use 12-inch grow bags with a mix of cocopeat, vermicompost, and perlite. Determinate varieties like Arka Rakshak are ideal for limited spaces. Weekly application of seaweed liquid fertilizer ensures high nutrient density. Self-pollination can be aided by gently shaking the plants during the morning hours (8–10 AM).",
+        img: "/images/agri_11.jpg",
+      },
     ],
   },
   {
@@ -127,6 +172,20 @@ const articles = [
       {
         heading: "Premium Market Channels and Export Opportunities",
         body: "Domestic: BigBasket Organic, Nature's Basket, ITC e-Choupal, and local organic stores pay ₹80–₹140/kg for certified organic rice vs ₹25–₹35/kg conventional. Export: APEDA (Agricultural and Processed Food Products Export Development Authority) provides 50% freight subsidy for organic exports. Major buyers: Japan, EU, USA, UAE. Tamil Nadu's GI-tagged varieties — Mappillai Samba, Seeraga Samba, Kichili Samba — command extraordinary international premiums of ₹200–₹400/kg. These traditional varieties combined with organic certification create the highest-value rice farming model available to Tamil Nadu farmers.",
+      },
+      {
+        heading: "Traditional Varieties and Nutrient Security",
+        body: "Tamil Nadu is home to 2,000+ traditional rice varieties. Mappillai Samba (for strength), Karuppu Kavuni (anti-cancer properties), and Thuyamalli (fragrant white) are seeing a 400% surge in urban demand. These varieties are naturally resistant to local pests and require 30% less water than HYVs. Growing these under organic protocols not only preserves biodiversity but also provides a stable 'niche market' income that is completely independent of fluctuating global commodity prices.",
+        img: "/images/agri_1.jpg",
+      },
+      {
+        heading: "Bio-Fertilizer Production on Farm (Panchagavyam)",
+        body: "Reduce input costs by 90% by producing your own bio-inputs. Panchagavyam (cow dung, urine, milk, curd, ghee + banana + jaggery + tender coconut water) serves as a potent growth promoter and immunity booster. Application: 3% foliar spray at 15-day intervals. Dasagavyam and Jeevamrutham are other powerful alternatives that restore soil microbial activity within 2–3 seasons, making the land 'self-fertilizing' and eliminating the need for expensive external organic manures.",
+      },
+      {
+        heading: "Organic Weed Management (The Labor Challenge)",
+        body: "Weeding is the highest cost in organic farming. Use 'Brown Manuring' — sow Dhaincha with paddy and spray 2,4-D (organic alternative: manual incorporation) at 25 days. The decomposing green manure smothers weeds while adding 60kg N/ha. Cono-weeder usage in SRI plots at 10-day intervals (10, 20, 30, 40 DAT) incorporates weeds back into the soil as nutrients and provides root aeration, leading to 15–20% higher yields compared to manual hand-weeding.",
+        img: "/images/agri_3.jpg",
       },
     ],
   },
@@ -170,6 +229,20 @@ const articles = [
         heading: "Government Subsidies for Sugarcane Farmers",
         body: "Fair & Remunerative Price (FRP): Central government mandates minimum ₹340/quintal for sugarcane delivered to mills (2025–26). Tamil Nadu SAP (State Advised Price): Often ₹10–₹20/quintal above FRP. TNAU Sugarcane Crop Advisory: Free SMS alerts for irrigation, fertilization, and pest management timing. National Sugar Institute Loan Scheme: Zero-interest loans up to ₹2 lakh for sugarcane pre-financing via Tamil Nadu Cooperative Sugar Federations. Drip irrigation subsidy: 75% subsidy (100% for SC/ST) under TNAU-TN government scheme for sugarcane fields.",
       },
+      {
+        heading: "Intercropping for Multi-Level Income",
+        body: "Sugarcane is a long-duration crop (12 months), but the wide row spacing (1.5m in paired row) allows for lucrative intercropping in the first 3–4 months. Best intercrops: Blackgram (yields 4–6 q/ha), Groundnut (8–10 q/ha) or Soybean. Lab-scale trials at TNAU showed intercropping with pulses provides an additional ₹15,000–₹25,000/ha net income while the pulse crop adds 30–40kg of biological nitrogen per hectare to the main sugarcane crop, reducing urea requirement significantly.",
+        img: "/images/agri_6.jpg",
+      },
+      {
+        heading: "Mechanized Harvesting and Labor Reduction",
+        body: "Manual harvesting costs have risen 300% in Tamil Nadu over the last decade. Whole-stalk sugarcane harvesters (e.g., Shaktiman, TAFE) can harvest 1 acre in 3–4 hours, replacing 40 manual laborers. Mechanical harvesting requires wide row spacing (at least 5 feet). While mill-to-mill logistics vary, most Tamil Nadu mills now provide harvesting services at subsidized rates. Farmers using mechanical harvesters report 5–8% higher sugar recovery due to cleaner, more uniform base-cutting of the cane.",
+      },
+      {
+        heading: "Improving Sugar Content (CCS%) and Ripening",
+        body: "Avoid nitrogen application after 6 months to prevent vegetative overgrowth and late-season water shoots. Foliar spray of Sodium metasilicate (0.5%) or Ethrel (300 ppm) at 8 and 10 months can boost CCS% by 0.5–1.0 unit. Proper trash mulching in the maturation phase keeps the root zone cool and promotes sucrose accumulation. Monitor brix% using a hand refractometer in the field; a reading of 20–22 indicates peak maturity and optimal harvest timing for both the farmer and the mill.",
+        img: "/images/agri_11.jpg",
+      },
     ],
   },
   {
@@ -207,6 +280,20 @@ const articles = [
       {
         heading: "Government Schemes for Irrigation Infrastructure",
         body: "Tamil Nadu Drip/Sprinkler Subsidy: SC/ST farmers: 100% subsidy on system cost, max ₹1,21,000/ha for drip. General farmers: 75% subsidy. National Mission for Sustainable Agriculture (NMSA): Covers water harvesting structures, farm ponds (100% subsidy for SC/ST). Per Drop More Crop (PDMC) sub-scheme under PMKSY: Central component funding drip in districts with <50% coverage. Micro Irrigation Fund (NABARD): Low-interest lending for irrigation equipment at 7% p.a. Tamil Nadu Water Resource Organization: Free water audit and drip design service for small farmers (<5 acres).",
+      },
+      {
+        heading: "Greywater Recycling and Modular Irrigation",
+        body: "For small-scale farms near urban centers (Chennai, Madurai, Coimbatore), treated greywater can provide 40–50% of irrigation needs. Use a simple 3-pond filtration system (sand, gravel, and aquatic plants like vetiver). Modular drip kits for 0.25 to 0.5 acres are now available for ₹5,000–₹8,000, allowing marginal farmers to start small and expand. This localized recycling combined with mulching can sustain a homestead garden even during record-breaking summer heat waves.",
+        img: "/images/agri_1.jpg",
+      },
+      {
+        heading: "Drought Preparedness and Soil Hydrogels",
+        body: "In rain-shadow regions of Tamil Nadu (Theni, Tirunelveli), droughts are a recurring reality. Use Potassium Polyacrylate (Hydrogel) at 2.5 kg/ha in the root zone. These 'super-absorbent polymers' hold 300–500 times their weight in water and release it slowly during dry spells, extending the time between irrigations by 50–70%. Additionally, farm ponds (30m x 30m x 3m) lined with HDPE silpaulin are mandatory for 'Life-saving irrigation' during critical dry periods in October-November.",
+      },
+      {
+        heading: "IoT-Driven Automation and Remote Control",
+        body: "Upgrade your drip system with solenoid valves connected to a GSM-based motor starter. Turn your pump 'ON' or 'OFF' via a simple missed call or an Android app. Integrated scheduling based on 10-day local weather forecasts prevents unnecessary irrigation before expected rains. Advanced systems also monitor pump health, dry-run protection, and phase imbalances, preventing expensive motor burnouts. Return on investment for GSM starters (₹4,000–₹7,000) is typically realized in just one harvest cycle through labor and energy savings.",
+        img: "/images/agri_9.jpg",
       },
     ],
   },
@@ -247,6 +334,24 @@ const articles = [
         heading: "Tamil Nadu Horticulture Dept. Schemes for Fruit Crops",
         body: "Planting material subsidy: 50% on tissue culture banana plantlets, grafted mango saplings, and citrus budded plants from TNHB nurseries. Drip irrigation: 100% subsidy for SC/ST fruit farmers, 75% for others. Plant protection subsidy: 50% on bio-pesticides and pheromone traps. Technology Mission for Integrated Development of Horticulture (TMIDH): Project-based funding up to ₹15 lakh for cold storage, pack house, and value addition units. National Horticulture Board: Interest subvention at 3% for loans up to ₹25 lakh for orchard development.",
       },
+      {
+        heading: "High-Density Planting (HDP) for Small Orchards",
+        body: "Maximize land productivity with HDP technology. Mango (Amrapali, Mallika) at 3m x 3m spacing accommodates 1,111 trees/ha vs 100 trees/ha in traditional 10m x 10m. HDP requires precision canopy management through annual pruning and specialized drip fertigation. Yields stabilize at 10–12 t/ha in Year 5 vs Year 15 in traditional orchards. HDP excels in districts like Krishnagiri where land value is rising and water availability is limited.",
+        img: "/images/agri_3.jpg",
+      },
+      {
+        heading: "Pollination and Bee-Keeping for Fruit Set",
+        body: "Pollination is the most neglected factor in fruit yield. Inadequate bee activity reduces fruit set in mango and citrus by 40–60%. Install 2–4 honeybee colonies (Apis cerana indica) per hectare during the flowering period. Beekeeping not only increases fruit yield and quality (uniform size and sugar content) but also provides a secondary 'bonus' income of ₹5,000–₹12,000/ha from honey and wax sales. Avoid chemical sprays during peak bee foraging hours (9 AM – 4 PM).",
+      },
+      {
+        heading: "Climate Resilience: Heat and Wind Stress",
+        body: "Orchards in southern Tamil Nadu face extreme desiccation during summer. Use windbreak trees like Casuarina or Bamboo on the western borders to reduce wind speed by 60%. Kaolin spray (3%) on mango foliage reflect excessive solar radiation, reducing canopy temperature by 3–5°C and preventing sun-burn on developing fruits. In 'Very Severe' drought years, prioritize 'Survival Irrigation' — maintain just enough moisture in a 1-meter radius around the trunk (drip zone) to keep the tree alive, sacrificing current harvest to protect the long-term investment.",
+        img: "/images/agri_11.jpg",
+      },
+      {
+        heading: "Digital Orchard Tracking and Precision Agriculture",
+        body: "Use the Zenith Agri platform to map each individual tree's health using satellite NDVI (Normalized Difference Vegetation Index) data. Areas showing 'Low Vigor' can be targeted for intensive fertigation or pest scouting. Digital maintenance of spray records and harvest dates is now mandatory for Global-GAP (Good Agricultural Practices) certification, which is required for direct exports to European supermarket chains. Traceability from 'Farm to Fork' ensures a 20–30% price premium for quality-conscious buyers.",
+      },
     ],
   },
 ];
@@ -259,34 +364,54 @@ const ArticleDetail = ({ article, onBack }) => {
         <span>Back to Knowledge Hub</span>
       </button>
 
-      {/* Hero Image — 50vh, full width */}
-      <div className="relative h-[50vh] w-full rounded-3xl overflow-hidden mb-10 shadow-2xl">
+      {/* Hero Image — 70vh, full width */}
+      <div className="relative h-[70vh] w-full overflow-hidden mb-10 shadow-3xl">
         <img src={article.image} alt={article.title} className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-nature-900/85 via-nature-900/30 to-transparent flex items-end p-10">
-          <div>
-            <span className="inline-block text-xs font-bold text-nature-200 bg-nature-700/60 px-3 py-1 rounded-full uppercase tracking-wider mb-3">{article.category}</span>
-            <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight">{article.title}</h1>
-            <p className="text-nature-200 mt-2 font-light">{article.date} &bull; {article.readTime}</p>
+        <div className="absolute inset-0 bg-gradient-to-t from-nature-900 via-nature-900/40 to-transparent flex items-end p-12">
+          <div className="max-w-4xl mx-auto w-full">
+            <span className="inline-block text-sm font-bold text-nature-100 bg-nature-600/80 backdrop-blur-md px-4 py-1.5 rounded-full uppercase tracking-widest mb-6 shadow-lg">{article.category}</span>
+            <h1 className="text-4xl md:text-7xl font-black text-white leading-[1.1] mb-4 drop-shadow-2xl">{article.title}</h1>
+            <div className="flex items-center gap-6 text-nature-100/80 font-medium">
+               <div className="flex items-center gap-2"><Sun size={18} /> <span>{article.date}</span></div>
+               <div className="flex items-center gap-2"><BookOpen size={18} /> <span>{article.readTime}</span></div>
+               <div className="flex items-center gap-2"><Leaf size={18} /> <span>{article.content.length} Sections</span></div>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Article Body */}
-      <div className="max-w-4xl mx-auto space-y-14">
-        <p className="text-xl text-gray-600 leading-relaxed border-l-4 border-nature-500 pl-6 font-light italic">{article.excerpt}</p>
+      <div className="max-w-5xl mx-auto px-6 space-y-20 pb-24">
+        <div className="bg-white p-10 rounded-[2.5rem] shadow-xl border border-gray-100 -mt-24 relative z-20">
+           <p className="text-2xl text-gray-700 leading-relaxed font-light italic text-center">
+             &ldquo;{article.excerpt}&rdquo;
+           </p>
+        </div>
 
         {article.content.map((section, idx) => (
-          <div key={idx} className="space-y-5">
-            <h2 className="text-2xl font-extrabold text-nature-900 flex items-start gap-3">
-              <span className="w-9 h-9 bg-nature-100 rounded-xl flex items-center justify-center text-nature-600 font-bold text-sm shrink-0 mt-0.5">{idx + 1}</span>
-              <span>{section.heading}</span>
-            </h2>
-            <p className="text-gray-700 leading-relaxed text-lg pl-12">{section.body}</p>
-            {section.img && (
-              <div className="rounded-2xl overflow-hidden shadow-xl h-[50vh] w-full mt-4 mb-6">
-                <img src={section.img} alt={section.heading} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-              </div>
-            )}
+          <div key={section.heading} className="space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-700">
+            <div className="flex items-center gap-6">
+               <div className="w-16 h-16 bg-nature-900 text-white rounded-2xl flex items-center justify-center text-2xl font-black shadow-xl ring-8 ring-nature-50">
+                  {idx + 1}
+               </div>
+               <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight uppercase leading-none">{section.heading}</h2>
+            </div>
+            
+            <div className="pl-0 md:pl-24 space-y-10">
+               <p className="text-gray-600 leading-[1.8] text-xl font-light">
+                 {section.body}
+               </p>
+               
+               {section.img && (
+                 <div className="rounded-[3rem] overflow-hidden shadow-2xl h-[70vh] w-full group relative">
+                   <img src={section.img} alt={section.heading} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                   <div className="absolute bottom-10 left-10 text-white font-bold text-sm bg-black/40 backdrop-blur-md px-6 py-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                      Visual Reference: {section.heading}
+                   </div>
+                 </div>
+               )}
+            </div>
           </div>
         ))}
 
@@ -302,6 +427,22 @@ const ArticleDetail = ({ article, onBack }) => {
       </div>
     </div>
   );
+};
+ArticleDetail.propTypes = {
+  article: PropTypes.shape({
+    title: PropTypes.string,
+    category: PropTypes.string,
+    date: PropTypes.string,
+    readTime: PropTypes.string,
+    image: PropTypes.string,
+    excerpt: PropTypes.string,
+    content: PropTypes.arrayOf(PropTypes.shape({
+      heading: PropTypes.string,
+      body: PropTypes.string,
+      img: PropTypes.string
+    }))
+  }).isRequired,
+  onBack: PropTypes.func.isRequired
 };
 
 const KnowledgeHub = ({ role }) => {
@@ -405,13 +546,13 @@ const KnowledgeHub = ({ role }) => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {filteredArticles.map((article) => (
-              <div
+              <button
                 key={article.id}
                 onClick={() => setSelectedArticle(article)}
-                className="bg-white rounded-3xl shadow-lg hover:shadow-2xl border border-slate-100 overflow-hidden hover:-translate-y-2 transition-all duration-500 cursor-pointer group flex flex-col"
+                className="bg-white text-left rounded-3xl shadow-lg hover:shadow-2xl border border-slate-100 overflow-hidden hover:-translate-y-2 transition-all duration-500 cursor-pointer group flex flex-col w-full"
               >
                 {/* Card Image — takes up meaningful portion */}
-                <div className="h-56 overflow-hidden relative">
+                <div className="h-56 overflow-hidden relative w-full">
                   <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-nature-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                     <span className="text-white font-bold tracking-wide text-sm flex items-center gap-2">
@@ -437,7 +578,7 @@ const KnowledgeHub = ({ role }) => {
                     <span className="text-xs text-gray-400">{article.content.length} sections</span>
                   </div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         )}
@@ -446,6 +587,10 @@ const KnowledgeHub = ({ role }) => {
       <Footer />
     </div>
   );
+};
+
+KnowledgeHub.propTypes = {
+  role: PropTypes.string
 };
 
 export default KnowledgeHub;
