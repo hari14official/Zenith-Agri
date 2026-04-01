@@ -1,0 +1,93 @@
+﻿
+> ams-frontend@0.0.0 build
+> vite build
+
+[36mvite v5.4.21 [32mbuilding for production...[36m[39m
+transforming...
+[32mΓ£ô[39m 28 modules transformed.
+node.exe : [31mx[39m 
+Build failed in 2.69s
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (  
+  [31mx[39m Build fail   
+ ed in 2.69s:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+[31merror during build:
+[31m[vite]: Rollup 
+failed to resolve import 
+"prop-types" from "C:/User
+s/ELCOT/OneDrive/Documents
+/GitHub/Zenith-Agri/fronte
+nd/src/pages/KnowledgeHub.
+jsx".
+This is most likely 
+unintended because it can 
+break your application at 
+runtime.
+If you do want to 
+externalize this module 
+explicitly add it to
+`build.rollupOptions.exter
+nal`[31m
+    at viteWarn (file:///C
+:/Users/ELCOT/OneDrive/Doc
+uments/GitHub/Zenith-Agri/
+frontend/node_modules/vite
+/dist/node/chunks/dep-BK3b
+2jBa.js:65855:17)
+    at onwarn (file:///C:/
+Users/ELCOT/OneDrive/Docum
+ents/GitHub/Zenith-Agri/fr
+ontend/node_modules/@vitej
+s/plugin-react/dist/index.
+js:90:7)
+    at onRollupWarning (fi
+le:///C:/Users/ELCOT/OneDr
+ive/Documents/GitHub/Zenit
+h-Agri/frontend/node_modul
+es/vite/dist/node/chunks/d
+ep-BK3b2jBa.js:65885:5)
+    at onwarn (file:///C:/
+Users/ELCOT/OneDrive/Docum
+ents/GitHub/Zenith-Agri/fr
+ontend/node_modules/vite/d
+ist/node/chunks/dep-BK3b2j
+Ba.js:65550:7)
+    at file:///C:/Users/EL
+COT/OneDrive/Documents/Git
+Hub/Zenith-Agri/frontend/n
+ode_modules/rollup/dist/es
+/shared/node-entry.js:2104
+2:13
+    at Object.logger [as 
+onLog] (file:///C:/Users/E
+LCOT/OneDrive/Documents/Gi
+tHub/Zenith-Agri/frontend/
+node_modules/rollup/dist/e
+s/shared/node-entry.js:230
+23:9)
+    at ModuleLoader.handle
+InvalidResolvedId (file://
+/C:/Users/ELCOT/OneDrive/D
+ocuments/GitHub/Zenith-Agr
+i/frontend/node_modules/ro
+llup/dist/es/shared/node-e
+ntry.js:21767:26)
+    at file:///C:/Users/EL
+COT/OneDrive/Documents/Git
+Hub/Zenith-Agri/frontend/n
+ode_modules/rollup/dist/es
+/shared/node-entry.js:2172
+5:26[39m

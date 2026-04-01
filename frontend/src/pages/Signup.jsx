@@ -25,55 +25,23 @@ const Signup = () => {
 
       <div className="max-w-4xl w-full bg-white rounded-2xl shadow-2xl relative z-10 flex flex-col md:flex-row overflow-hidden min-h-[550px]">
         {/* Left Side */}
-        <div className="w-full md:w-1/2 bg-gradient-to-br from-nature-700 via-nature-800 to-nature-950 p-10 md:p-14 flex flex-col relative overflow-hidden text-white">
-          {/* Decorative Elements */}
-          <div className="absolute -top-24 -right-24 w-64 h-64 bg-nature-500/20 rounded-full blur-[100px]"></div>
-          <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-nature-400/10 rounded-full blur-[100px]"></div>
-          
-          <button onClick={() => navigate('/')} className="text-white/60 hover:text-white mb-12 self-start flex items-center gap-3 transition-all relative z-10 group bg-white/5 px-4 py-2 rounded-full border border-white/5 hover:border-white/20">
-            <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-            <span className="text-xs font-bold uppercase tracking-widest">Back to Portal</span>
+        <div className="w-full md:w-1/2 bg-gray-50 p-8 md:p-12 flex flex-col relative border-r border-gray-100">
+          <button onClick={() => navigate('/')} className="text-gray-400 hover:text-gray-600 mb-12 self-start">
+            <ArrowLeft size={24} />
           </button>
           
-          <div className="relative z-10">
-            <div className="mb-10">
-              <h3 className="text-xs font-bold text-nature-400 uppercase tracking-[0.3em] mb-4">Quick Sign Up</h3>
-              <div className="space-y-4">
-                <button type="button" className="w-full flex items-center justify-center gap-4 bg-white/10 hover:bg-white/20 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold text-white transition-all backdrop-blur-xl shadow-2xl hover:-translate-y-1 group">
-                  <div className="bg-white rounded-full p-1 group-hover:scale-110 transition-transform">
-                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" />
-                  </div>
-                  <span className="tracking-wide">Sign up with Google</span>
-                </button>
-                <button type="button" className="w-full flex items-center justify-center gap-4 bg-white/10 hover:bg-white/20 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold text-white transition-all backdrop-blur-xl shadow-2xl hover:-translate-y-1 group">
-                  <div className="bg-nature-500 rounded-full p-1.5 group-hover:scale-110 transition-transform">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                  </div>
-                  <span className="tracking-wide">Sign up with Email</span>
-                </button>
-              </div>
-            </div>
-
-            <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-10"></div>
-
-            <h2 className="text-4xl font-black text-white mb-4 tracking-tighter leading-tight">Empowering <span className="text-nature-400">Agricultural</span> Innovation.</h2>
-            <p className="text-nature-100/70 text-sm font-light leading-relaxed mb-12">Start your journey towards smarter, more productive, and sustainable farming with Zenith Agri.</p>
+          <div className="mt-auto mb-auto">
+             <h2 className="text-2xl font-bold text-gray-900 mb-2">Continue with</h2>
+            <p className="text-gray-500 text-sm mb-6">Choose an alternative way to sign up</p>
             
-            <div className="p-8 bg-white/5 rounded-[2rem] border border-white/10 backdrop-blur-2xl shadow-inner group">
-               <div className="flex items-center gap-5 mb-5">
-                  <div className="w-14 h-14 rounded-2xl bg-nature-500 flex items-center justify-center text-white text-2xl font-black shadow-xl group-hover:rotate-6 transition-transform">Z</div>
-                  <div>
-                    <div className="text-white text-lg font-black tracking-tight">Zenith Agri Ecosystem</div>
-                    <div className="text-nature-400 text-[10px] font-bold uppercase tracking-[0.2em]">Unified Platform</div>
-                  </div>
-               </div>
-               <ul className="text-nature-100 text-xs space-y-3 font-light">
-                 <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-nature-400"></div> Real-time weather & market data</li>
-                 <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-nature-400"></div> Advanced AI crop health diagnostics</li>
-                 <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-nature-400"></div> Personalized soil analysis reports</li>
-                 <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-nature-400"></div> Government schemes discovery</li>
-               </ul>
-            </div>
+            <button type="button" className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors mb-4 shadow-sm">
+              <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" />
+              <span>Sign up with Google</span>
+            </button>
+            <button type="button" className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors shadow-sm">
+              <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+              <span>Sign up with Email/Password</span>
+            </button>
           </div>
         </div>
 
