@@ -35,6 +35,7 @@ const LandAnalysis = () => {
   const [selectedCrop, setSelectedCrop] = useState(null);
   const [cropDetailsText, setCropDetailsText] = useState("");
   const [isLoadingDetails, setIsLoadingDetails] = useState(false);
+  const [cropAiResult, setCropAiResult] = useState(null);
 
   // Helper inside component to fetch AI predictions
   const fetchGemini = async (prompt) => {
@@ -44,6 +45,32 @@ const LandAnalysis = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         contents: [{ parts: [{ text: prompt }] }]
+      })
+    });
+    const data = await response.json();
+    if (data.error) throw new Error(data.error.message);
+    return data.candidates[0].content.parts[0].text;
+  };
+
+  const fetchGeminiVision = async (prompt, file) => {
+    // Convert file to base64
+    const base64 = await new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result.split(',')[1]);
+      reader.readAsDataURL(file);
+    });
+
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{
+          parts: [
+            { text: prompt },
+            { inline_data: { mime_type: file.type, data: base64 } }
+          ]
+        }]
       })
     });
     const data = await response.json();
@@ -173,9 +200,39 @@ const LandAnalysis = () => {
     }
   };
 
-  const startCropAnalysis = () => {
+  const startCropAnalysis = async () => {
+    if (!GEMINI_API_KEY) {
+      setCropStep(2);
+      setTimeout(() => setCropStep(3), 2000);
+      return;
+    }
+
     setCropStep(2);
-    setTimeout(() => setCropStep(3), 3000);
+    try {
+      const prompt = `Analyze this image of a ${cropName || 'crop'}. Identify if there is any disease, defect, or nutrient deficiency. 
+      Return the result as a raw JSON object with these EXACT keys:
+      {
+        "title": "Short title like 'Tomato Plant - Early Blight'",
+        "type": "Specific scientific or common name",
+        "stage": "Estimated growth stage",
+        "defect": "Name of the disease or issue",
+        "defectColor": "tailwind color class e.g. text-red-800",
+        "solution": "Practical steps for the farmer",
+        "product": "Recommended fungicide or fertilizer",
+        "when": "When to apply",
+        "why": "Why this treatment works"
+      }
+      ONLY return the JSON. No markdown backticks.`;
+      
+      const responseText = await fetchGeminiVision(prompt, cropFile);
+      const cleanJson = responseText.replace(/```json|```/g, '').trim();
+      const result = JSON.parse(cleanJson);
+      setCropAiResult(result);
+      setCropStep(3);
+    } catch (e) {
+      console.error("AI Vision failed", e);
+      setCropStep(3); // Fallback to mock
+    }
   };
 
   // Crop results database based on detected crop
@@ -232,7 +289,7 @@ const LandAnalysis = () => {
     };
   };
 
-  const cropResult = cropStep === 3 ? getCropResults() : null;
+  const cropResult = cropStep === 3 ? (cropAiResult || getCropResults()) : null;
 
   return (
     <div className="flex flex-col min-h-screen bg-nature-50">

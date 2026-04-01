@@ -179,11 +179,11 @@ async def serve_spa(full_path: str):
     # Serve static assets located in the root of dist (e.g. vite.svg)
     file_path = os.path.join(frontend_dist, full_path)
     if os.path.isfile(file_path):
-        return FileResponse(file_path)
+        return FileResponse(file_path, headers={"Cache-Control": "no-cache, no-store, must-revalidate"})
 
     # Serve index.html to allow React Router to handle client-side routing
     index_file = os.path.join(frontend_dist, "index.html")
     if os.path.isfile(index_file):
-        return FileResponse(index_file)
+        return FileResponse(index_file, headers={"Cache-Control": "no-cache, no-store, must-revalidate"})
         
     raise HTTPException(status_code=404, detail="Frontend build not found")
