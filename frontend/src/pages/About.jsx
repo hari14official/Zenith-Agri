@@ -87,7 +87,7 @@ const About = ({ role }) => {
             <span className="text-sm font-bold text-nature-600 uppercase tracking-widest">Advantages</span>
             <h2 className="text-4xl font-extrabold text-gray-900 mt-3 mb-4">Why Choose Zenith Agri?</h2>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Unlike generic software, every feature is purpose-built for the real challenges facing Tamil Nadu's farming communities.
+              Unlike generic software, every feature is purpose-built for the real challenges facing India's farming communities.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -95,7 +95,7 @@ const About = ({ role }) => {
               { icon: Target, title: 'Hyper-Local Precision', desc: 'AI recommendations are calibrated for your exact GPS coordinates, district-level weather data, and soil classification — not one-size-fits-all national averages.', color: 'bg-green-100 text-green-700' },
               { icon: Shield, title: 'Early Disease Detection', desc: 'Upload a photo of any crop leaf and our deep learning model instantly identifies the pathogen and prescribes organic or chemical treatment with dosage rates.', color: 'bg-red-100 text-red-700' },
               { icon: BarChart2, title: 'Real-Time Soil Analysis', desc: 'Combine your soil type, pH, and fertility data with live OpenWeatherMap meteorological feeds to get the most accurate crop suitability scores available.', color: 'bg-blue-100 text-blue-700' },
-              { icon: Globe, title: 'Government Scheme Access', desc: 'We track central schemes like PM-KISAN, PMFBY, and state-level Tamil Nadu subsidies in real time, alerting you when you are eligible to apply.', color: 'bg-purple-100 text-purple-700' },
+              { icon: Globe, title: 'Government Scheme Access', desc: 'We track central schemes like PM-KISAN, PMFBY, and state-level Government subsidies in real time, alerting you when you are eligible to apply.', color: 'bg-purple-100 text-purple-700' },
               { icon: BookOpen, title: 'Expert Knowledge Hub', desc: 'Curated, high-depth articles covering paddy, vegetables, fruits, and commercial crops — written using research from TNAU, ICAR, and the Ministry of Agriculture.', color: 'bg-yellow-100 text-yellow-700' },
               { icon: Leaf, title: 'Sustainable First Design', desc: 'Every recommendation prioritizes soil health and water conservation. We suggest organic inputs first, with chemical alternatives only when scientifically necessary.', color: 'bg-emerald-100 text-emerald-700' },
             ].map((f) => {
@@ -185,7 +185,7 @@ const About = ({ role }) => {
       <section className="relative h-80 overflow-hidden">
         <img src="/images/about3.jpg" alt="Bountiful harvest" className="absolute inset-0 w-full h-full object-cover brightness-50" />
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
-          <h2 className="text-4xl font-extrabold text-white mb-4">Join Tamil Nadu's Agricultural Revolution</h2>
+          <h2 className="text-4xl font-extrabold text-white mb-4">Join India's Agricultural Revolution</h2>
           <p className="text-nature-200 text-lg max-w-2xl mb-8">Sign up for free and get your first AI-powered crop recommendation within minutes.</p>
           <a
             href="/signup"

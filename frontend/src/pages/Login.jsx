@@ -30,15 +30,15 @@ const Login = () => {
             <ArrowLeft size={24} />
           </button>
           
-          <div className="mt-auto mb-auto">
+          <div className="mt-4">
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Continue with</h2>
             <p className="text-gray-500 text-sm mb-6">Choose an alternative way to sign in</p>
             
-            <button type="button" className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors mb-4 shadow-sm">
+            <button type="button" className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-all mb-4 shadow-sm active:scale-95">
               <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" />
               <span>Continue with Google</span>
             </button>
-            <button type="button" className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors shadow-sm">
+            <button type="button" className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-all shadow-sm active:scale-95">
               <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
               <span>Continue with Email/Password</span>
             </button>
@@ -77,15 +77,26 @@ const Login = () => {
               </label>
             </div>
 
-            <div className="flex gap-4 pt-2">
-              <label className="flex items-center text-sm text-gray-700 cursor-pointer">
-                <input type="radio" name="role" value="Farmer" checked={role === 'Farmer'} onChange={() => setRole('Farmer')} className="mr-2 w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500" />
-                <span>Farmer</span>
-              </label>
-              <label className="flex items-center text-sm text-gray-700 cursor-pointer">
-                <input type="radio" name="role" value="Admin" checked={role === 'Admin'} onChange={() => setRole('Admin')} className="mr-2 w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500" />
-                <span>Admin</span>
-              </label>
+            <div className="pt-2">
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Login as</p>
+              <div className="flex bg-gray-100 p-1 rounded-xl w-full max-w-[280px]">
+                <button 
+                  type="button"
+                  onClick={() => setRole('Farmer')}
+                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-semibold transition-all ${role === 'Farmer' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                >
+                  <img src="/images/farmer-icon.svg" className="w-4 h-4 opacity-70" alt="" onError={(e) => e.target.style.display='none'} />
+                  Farmer
+                </button>
+                <button 
+                  type="button"
+                  onClick={() => setRole('Admin')}
+                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-semibold transition-all ${role === 'Admin' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                >
+                   <img src="/images/admin-icon.svg" className="w-4 h-4 opacity-70" alt="" onError={(e) => e.target.style.display='none'} />
+                  Admin
+                </button>
+              </div>
             </div>
 
             <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition-colors mt-6">
