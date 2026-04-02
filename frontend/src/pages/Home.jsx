@@ -9,16 +9,37 @@ const Home = () => {
   const [currentSlide, setCurrentSlide] = React.useState(0);
   
   const slides = [
-    "/images/hero1.jpg",
-    "/images/hero2.jpg",
-    "/images/hero3.jpg",
-    "/images/hero4.jpg"
+    {
+      img: "/images/hero_slide_1.png",
+      title: "Empowering Rural Tradition",
+      desc: "Zenith Agri honors the legacy of traditional farming while bringing modern AI-driven insights to every furrow plowed."
+    },
+    {
+      img: "/images/hero_slide_2.png",
+      title: "Precision Input Management",
+      desc: "Optimize your sowing and fertilization with real-time soil health analytics and weather-synchronized protocols."
+    },
+    {
+      img: "/images/hero_slide_3.png",
+      title: "Success Through Intelligence",
+      desc: "Harness the power of machine learning to identify crop diseases early and ensure a bountiful, healthy harvest."
+    },
+    {
+      img: "/images/hero_slide_4.png",
+      title: "Community-Driven Agronomy",
+      desc: "Collaborate with experts and fellow farmers to share variety testing results and scale sustainable agricultural practices."
+    },
+    {
+      img: "/images/hero_slide_5.png",
+      title: "Future-Proof Your Farmland",
+      desc: "From lush deltas to arid plains, our platform provides the intelligence needed to thrive in any agro-climatic condition."
+    }
   ];
 
   React.useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 4500);
+    }, 5000);
     return () => clearInterval(timer);
   }, [slides.length]);
 
@@ -45,7 +66,7 @@ const Home = () => {
           {slides.map((slide, index) => (
             <img
               key={index}
-              src={slide}
+              src={slide.img}
               alt={`Agriculture Slide ${index + 1}`}
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
                 index === currentSlide ? "opacity-100" : "opacity-0"
@@ -61,13 +82,32 @@ const Home = () => {
               <Activity size={14} />
               <span>Farm Field Management Software</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tight">
-              Data-Driven <br/> Agronomy & Breeding
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 font-light mb-10 leading-relaxed max-w-2xl">
-              Zenith Agri is a unified platform integrating plant breeding, variety testing, AI land analysis, and seed production to transform your agricultural yield.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            
+            <div className="relative h-[280px] md:h-[350px]">
+              {slides.map((slide, index) => (
+                <div 
+                  key={index}
+                  className={`absolute inset-0 transition-all duration-1000 ${
+                    index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"
+                  }`}
+                >
+                  <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tight">
+                    {slide.title.includes(" ") ? (
+                      <>
+                        {slide.title.split(' ').slice(0, 2).join(' ')} <br/> {slide.title.split(' ').slice(2).join(' ')}
+                      </>
+                    ) : (
+                      slide.title
+                    )}
+                  </h1>
+                  <p className="text-xl md:text-2xl text-gray-300 font-light mb-10 leading-relaxed max-w-2xl">
+                    {slide.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 mt-8">
               <button 
                 onClick={() => navigate('/login')}
                 className="bg-nature-500 hover:bg-nature-400 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-[0_0_30px_-5px_var(--tw-shadow-color)] shadow-nature-500/50 flex items-center justify-center gap-2"
@@ -81,6 +121,17 @@ const Home = () => {
               >
                 Explore More
               </button>
+            </div>
+            
+            {/* Slide Indicators */}
+            <div className="flex gap-3 mt-12">
+              {slides.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentSlide(i)}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${i === currentSlide ? 'w-12 bg-nature-500' : 'w-4 bg-white/30 hover:bg-white/50'}`}
+                />
+              ))}
             </div>
           </div>
         </div>
