@@ -10,27 +10,27 @@ const Home = () => {
   
   const slides = [
     {
-      img: "/images/hero_slide_1.png",
+      img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2664&auto=format&fit=crop",
       title: "Empowering Rural Tradition",
       desc: "Zenith Agri honors the legacy of traditional farming while bringing modern AI-driven insights to every furrow plowed."
     },
     {
-      img: "/images/hero_slide_2.png",
+      img: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=2670&auto=format&fit=crop",
       title: "Precision Input Management",
       desc: "Optimize your sowing and fertilization with real-time soil health analytics and weather-synchronized protocols."
     },
     {
-      img: "/images/hero_slide_3.png",
+      img: "https://images.unsplash.com/photo-1560493676-04071c5f4cf2?q=80&w=2574&auto=format&fit=crop",
       title: "Success Through Intelligence",
       desc: "Harness the power of machine learning to identify crop diseases early and ensure a bountiful, healthy harvest."
     },
     {
-      img: "/images/hero_slide_4.png",
+      img: "https://images.unsplash.com/photo-1595113316349-9fa4ee24f884?q=80&w=2664&auto=format&fit=crop",
       title: "Community-Driven Agronomy",
       desc: "Collaborate with experts and fellow farmers to share variety testing results and scale sustainable agricultural practices."
     },
     {
-      img: "/images/hero_slide_5.png",
+      img: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?q=80&w=2671&auto=format&fit=crop",
       title: "Future-Proof Your Farmland",
       desc: "From lush deltas to arid plains, our platform provides the intelligence needed to thrive in any agro-climatic condition."
     }
@@ -76,8 +76,8 @@ const Home = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-stone-900/90 via-stone-900/70 to-transparent"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
-          <div className="max-w-3xl">
+        <div className="relative z-10 px-6 md:px-12 w-full">
+          <div className="max-w-4xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-nature-500/20 border border-nature-400/30 text-nature-300 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
               <Activity size={14} />
               <span>Farm Field Management Software</span>
