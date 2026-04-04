@@ -35,7 +35,7 @@ const AgribusinessInfo = () => {
           </div>
           <div className="flex-1">
             <img 
-              src="https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?q=80&w=2670&auto=format&fit=crop" 
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4yRqyNJxxJIe2lYfQN0GH8BWcjeb_TkxoKA&s" 
               alt="Farmer in the field" 
               className="w-full h-[480px] rounded-2xl shadow-2xl object-cover"
             />

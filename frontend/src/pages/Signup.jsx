@@ -17,7 +17,7 @@ const Signup = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/images/signup.jpg" 
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo0C79qjNYs6PniHBWQsiK7iEoT7RdODFXMw&s" 
           alt="Agriculture Background" 
           className="w-full h-full object-cover brightness-[0.6]"
         />

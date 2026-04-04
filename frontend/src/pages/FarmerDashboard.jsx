@@ -139,7 +139,7 @@ const FarmerDashboard = () => {
             
             <div onClick={() => window.location.href = '/farmer/hub'} className="bg-white p-8 rounded-3xl shadow-lg border border-nature-100 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 cursor-pointer group">
               <div className="h-48 bg-nature-100 rounded-2xl mb-6 flex items-center justify-center overflow-hidden">
-                <img src="/images/paddy.jpg" alt="Rice" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-9caO8I7Ujrw51aSCU8FSYuX9fSCHWedBLA&s" alt= "Paddy" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
               </div>
               <h4 className="text-xl font-extrabold text-gray-900 mb-3 group-hover:text-nature-600 transition-colors">Paddy Farming in Tamil Nadu</h4>
               <p className="text-gray-500 text-sm mb-6 line-clamp-2 leading-relaxed font-light">Best practices for paddy cultivation emphasizing water management and pest control using modern techniques suited for Tamil Nadu's agro-climatic zones.</p>
@@ -163,7 +163,7 @@ const FarmerDashboard = () => {
 
             <div onClick={() => window.location.href = '/farmer/hub'} className="bg-white p-8 rounded-3xl shadow-lg border border-nature-100 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 cursor-pointer group">
               <div className="h-48 bg-nature-100 rounded-2xl mb-6 flex items-center justify-center overflow-hidden">
-                <img src="/images/sugarcane.jpg" alt="Sugarcane" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+                <img src="https://eos.com/wp-content/uploads/2022/11/growing-sugar-cane.jpg.webp" alt="Sugarcane" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
               </div>
               <h4 className="text-xl font-extrabold text-gray-900 mb-3 group-hover:text-nature-600 transition-colors">Sugarcane Yield Optimization</h4>
               <p className="text-gray-500 text-sm mb-6 line-clamp-2 leading-relaxed font-light">Advanced ratoon management and integrated nutrient supply systems for achieving record sugarcane tonnage in South Indian conditions.</p>

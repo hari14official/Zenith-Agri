@@ -17,7 +17,7 @@ const Login = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/images/login.jpg" 
+          src="https://static.vecteezy.com/system/resources/thumbnails/007/951/093/small/hand-holding-young-corn-for-planting-in-garden-with-sunrise-background-free-photo.jpg" 
           alt="Agriculture Background" 
           className="w-full h-full object-cover brightness-[0.6]"
         />

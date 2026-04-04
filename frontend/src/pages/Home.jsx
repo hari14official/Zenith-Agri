@@ -15,17 +15,17 @@ const Home = () => {
       desc: "Zenith Agri honors the legacy of traditional farming while bringing modern AI-driven insights to every furrow plowed."
     },
     {
-      img: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=2670&auto=format&fit=crop",
+      img: "https://www.grantthornton.in/globalassets/1.-member-firms/india/new-homepage/media/1440x658px/1440x600px_hero_banner_shutterstock_1032011908.jpg",
       title: "Precision Input Management",
       desc: "Optimize your sowing and fertilization with real-time soil health analytics and weather-synchronized protocols."
     },
     {
-      img: "https://images.unsplash.com/photo-1560493676-04071c5f4cf2?q=80&w=2574&auto=format&fit=crop",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6464DfIQGw4Gi17AOQNpmzFvh2-OK91zZVQ&s",
       title: "Success Through Intelligence",
       desc: "Harness the power of machine learning to identify crop diseases early and ensure a bountiful, healthy harvest."
     },
     {
-      img: "https://images.unsplash.com/photo-1595113316349-9fa4ee24f884?q=80&w=2664&auto=format&fit=crop",
+      img: "https://images.unsplash.com/photo-1590682680695-43b964a3ae17?q=80&w=2000&auto=format&fit=crop",
       title: "Community-Driven Agronomy",
       desc: "Collaborate with experts and fellow farmers to share variety testing results and scale sustainable agricultural practices."
     },
